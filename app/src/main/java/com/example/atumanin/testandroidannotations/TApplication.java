@@ -16,12 +16,12 @@ import org.androidannotations.annotations.EApplication;
 public class TApplication extends Application {
 
     @Bean
-    OttoBus mBus;
+    rxBus mBus;
 
     @Override
     public void onCreate() {
 
-        mBus.register(this);
+//        mBus.register(this);
         Log.d("TApplication", "mBus.register");
         super.onCreate();
     }

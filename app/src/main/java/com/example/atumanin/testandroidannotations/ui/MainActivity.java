@@ -2,13 +2,12 @@ package com.example.atumanin.testandroidannotations.ui;
 
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.atumanin.testandroidannotations.OttoBus;
+import com.example.atumanin.testandroidannotations.rxBus;
 import com.example.atumanin.testandroidannotations.R;
 import com.squareup.otto.Subscribe;
 
@@ -24,19 +23,19 @@ public class MainActivity extends AppCompatActivity {
     protected TextView busEventButton;
 
     @Bean
-    OttoBus mBus;
+    rxBus mBus;
 
     @AfterViews
     public void afterViews(){
         Log.d("MainActivity", "afterViews");
-        mBus.register(this);
+//        mBus.register(this);
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 //Do something after 100ms
                 Log.d("MainActivity", "postDelayed");
-                mBus.post(new ExampleEvent());
+//                mBus.post(new ExampleEvent());
             }
         }, 1000);
 
@@ -44,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("MainActivity", "busEventButton");
-                mBus.post(new ButtonEvent());
+//                mBus.post(new ButtonEvent());
             }
         });
     }
